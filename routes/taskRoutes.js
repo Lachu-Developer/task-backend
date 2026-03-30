@@ -1,0 +1,17 @@
+const express = require("express")
+const router = express.Router()
+
+const auth = require("../middleware/auth")
+const {
+  createTask,
+  getTasks,
+  deleteTask,
+  toggleTask
+} = require("../controllers/taskController")
+
+router.post("/tasks", auth, createTask)
+router.get("/tasks", auth, getTasks)
+router.delete("/tasks/:id", auth, deleteTask)
+router.put("/tasks/:id", auth, toggleTask)
+
+module.exports = router
