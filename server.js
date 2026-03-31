@@ -6,6 +6,9 @@ const mongoose = require("mongoose")
 
 const app = express()
 
+const helmet = require("helmet")
+app.use(helmet())
+
 app.use(cors({
   origin: "*"
 }))
@@ -24,6 +27,7 @@ const taskRoutes = require("./routes/taskRoutes")
 
 app.use("/api", userRoutes)
 app.use("/api", taskRoutes)
+
 
 const PORT = process.env.PORT || 3001
 
